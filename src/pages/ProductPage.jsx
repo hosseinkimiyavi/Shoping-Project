@@ -1,11 +1,21 @@
-import React from 'react'
-import { useProduct } from '../Context/ProductProvider'
+import { useProduct } from "../Context/ProductProvider";
+import styles from "../pages/productPage.module.css"
 function ProductPage() {
-  const products= useProduct()
+  const products = useProduct();
   console.log(products);
   return (
-    <div>ProductPage</div>
-  )
+    <>
+      <div className={styles.container}>
+        <div className={styles.products}>
+          {products.map((p) => (
+            <p key={p.id}>{p.title}</p>
+          ))}
+          {!products.lenght && (<p>loading...</p>)}
+        </div>
+        <div>Side Bar</div>
+      </div>
+    </>
+  );
 }
 
-export default ProductPage
+export default ProductPage;
