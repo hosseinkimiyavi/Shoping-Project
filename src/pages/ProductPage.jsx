@@ -3,31 +3,48 @@ import { FaListUl } from "react-icons/fa";
 import { ImSearch } from "react-icons/im";
 import Loader from "../Components/Loader";
 import { useProduct } from "../Context/ProductProvider";
-import styles from "../pages/productPage.module.css"
-import { useState } from "react";
+import styles from "../pages/productPage.module.css";
+import { useEffect, useState } from "react";
 function ProductPage() {
   const products = useProduct();
- 
-  const [search,setsearch] =useState("");
-  const SearchHandler =()=>{
+  const [displayed, setDisplayed] = useState([]);
+  const [search, setsearch] = useState("");
+  const [query, setquery] = useState({});
 
-  }
-  const categoryHandler =(event)=>{
+  useEffect(() => {
+    setDisplayed(products);
+  }, [products]);
+
+  useEffect(() => {
+    console.log(query);
+  }, [query]);
+
+  const SearchHandler = () => {
+    setquery((query) => ({ ...query, search }));
+  };
+  const categoryHandler = (event) => {
     const { tagName } = event.target;
-    const category = event.target.innerText.toLocaleLowerCase()
-    if(tagName!="LI") return;
-    console.log(category);
-  }
+    const category = event.target.innerText.toLocaleLowerCase();
+    if (tagName != "LI") return;
+    setquery((query) => ({ ...query, category }));
+  };
   return (
     <>
-    <div>
-      <input type="text" placeholder="Search..." value={search} onChange={e=>setsearch(e.target.value.toLocaleLowerCase().trim())} />
-      <button onClick={SearchHandler}><ImSearch /></button>
-    </div>
+      <div>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={search}
+          onChange={(e) => setsearch(e.target.value.toLocaleLowerCase().trim())}
+        />
+        <button onClick={SearchHandler}>
+          <ImSearch />
+        </button>
+      </div>
       <div className={styles.container}>
         <div className={styles.products}>
-          {!products.length && (<Loader />)}
-          {products.map((p) => (
+          {!displayed.length && <Loader />}
+          {displayed.map((p) => (
             <Card key={p.id} data={p} />
           ))}
         </div>
