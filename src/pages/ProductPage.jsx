@@ -5,6 +5,7 @@ import Loader from "../Components/Loader";
 import { useProduct } from "../Context/ProductProvider";
 import styles from "../pages/productPage.module.css";
 import { useEffect, useState } from "react";
+import { Filterproducts, SearchProducts } from "../Helpers/helper";
 function ProductPage() {
   const products = useProduct();
   const [displayed, setDisplayed] = useState([]);
@@ -16,7 +17,11 @@ function ProductPage() {
   }, [products]);
 
   useEffect(() => {
-    console.log(query);
+    let finalProducts = SearchProducts (products ,query.search);
+      console.log(finalProducts);
+      finalProducts =Filterproducts(finalProducts,query.category)
+      setDisplayed(finalProducts)
+    
   }, [query]);
 
   const SearchHandler = () => {
