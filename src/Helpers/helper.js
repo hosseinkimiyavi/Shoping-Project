@@ -8,6 +8,17 @@ const SearchedProducts = products.filter((p)=>
     p.title.toLowerCase().includes(search));
     return SearchedProducts;
 };
+const createQueryObject =(currentquery,newquery)=>{
+    if(newquery.category=="all"){
+      const {category,...rest} =currentquery;
+      return rest
+    }
+    if(newquery.search ==""){
+        const {search,...rest} =currentquery
+        return rest
+    }
+    return {...currentquery,...newquery}
+  }
 
 const Filterproducts =(products ,category)=>{
     if(!category) return products;
@@ -16,4 +27,4 @@ const Filterproducts =(products ,category)=>{
 }
 
 
-export {shortenText ,SearchProducts,Filterproducts}
+export {shortenText ,SearchProducts,Filterproducts ,createQueryObject}
