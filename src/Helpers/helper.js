@@ -20,6 +20,15 @@ const createQueryObject =(currentquery,newquery)=>{
     return {...currentquery,...newquery}
   }
 
+  const getinitialQuery =(searhparams)=>{
+    const query ={}
+    const category =searhparams.get("category")
+    const search =searhparams.get("search")
+    if (category) query.category=category
+    if(search) query.search=search
+    return query
+  }
+
 const Filterproducts =(products ,category)=>{
     if(!category) return products;
     const Filteredproducts = products.filter((p)=>p.category==category);
@@ -27,4 +36,4 @@ const Filterproducts =(products ,category)=>{
 }
 
 
-export {shortenText ,SearchProducts,Filterproducts ,createQueryObject}
+export {shortenText ,SearchProducts,Filterproducts ,createQueryObject,getinitialQuery}
