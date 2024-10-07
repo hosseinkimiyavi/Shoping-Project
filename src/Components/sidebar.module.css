@@ -25,7 +25,7 @@
     cursor: pointer;
 }
 .sidebar li:hover{
-    color: #fff;
+    color: #afa8d2;
 }
 .selected{
     background-color: #041540;
