@@ -35,5 +35,12 @@ const Filterproducts =(products ,category)=>{
     return Filteredproducts;
 }
 
+const SumProducts=(products)=>{
+const itemCounter =products.reduce((acc,cur)=>acc+cur.quantity ,0);
+const total =products.reduce((acc,cur)=>acc +cur.price *cur.quantity,0).toFixed(2);
 
-export {shortenText ,SearchProducts,Filterproducts ,createQueryObject,getinitialQuery}
+return{itemCounter ,total}
+}
+
+
+export {shortenText ,SearchProducts,Filterproducts ,createQueryObject,getinitialQuery,SumProducts}

@@ -8,8 +8,9 @@ import { useCard } from "../Context/CartContext";
 function Card({data} ) {
   const { title, id, price, image } = data;
  const [state,dispatch] = useCard()
+ console.log(state);
  const clickHandler =()=>{
-  dispatch({type:"add",payload:data})
+  dispatch({type:"ADD_ITEM",payload:data})
  }
   return (
     <div className={styles.card}>
