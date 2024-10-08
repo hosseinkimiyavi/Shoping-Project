@@ -18,7 +18,36 @@ switch (action.type) {
     ...SumProducts(state.selectedItem),
     checkOut:false
   }
-  
+  case "REMOVE_ITEM":
+    const newSelectedItem = state.selectedItem.filter((item)=>item.id !== action.payload.id);
+    return{
+      ...state,
+      selectedItem:[...newSelectedItem],
+      ...SumProducts(newSelectedItem),
+      checkOut:false,
+    }
+    case "INCREASE":
+      const increaseIndex =state.selectedItem.findIndex((item)=>item.id ==action.payload.id)
+      state.selectedItem[increaseIndex].quantity ++;
+      return{
+        ...state,
+        ...SumProducts(state.selectedItem),
+
+      }
+      case "DECREASE":
+        const decreaseIndex=state.selectedItem.findIndex((item)=>item.id ==action.payload.id)
+        state.selectedItem[decreaseIndex].quantity --;
+        return{
+          ...state,
+          ...SumProducts(state.selectedItem),
+        }
+        case "CHECKOUT":
+          return{
+            selectedItem:[],
+            itemCounter:0,
+            total:0,
+            checkOut:true
+          }
 
   default:
     throw new error("invalid Action!");
