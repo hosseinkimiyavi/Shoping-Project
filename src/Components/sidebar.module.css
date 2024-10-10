@@ -26,10 +26,12 @@
 }
 .sidebar li:hover{
     color: #afa8d2;
+    
 }
 .selected{
     background-color: #041540;
     color: #fff;
     border-radius: 10px;
+    transition-duration: 400ms;
     
 }

@@ -11,8 +11,9 @@ const initialstate={
 const reducer=(state ,action)=>{
 switch (action.type) {
   case "ADD_ITEM":
-   if(!state.selectedItem.find((item)=>item.id==action.payload.id))
+   if(!state.selectedItem.find((item)=>item.id==action.payload.id)){
     state.selectedItem.push({...action.payload,quantity:1});
+   }
   return{
     ...state,
     ...SumProducts(state.selectedItem),
@@ -28,7 +29,7 @@ switch (action.type) {
     }
     case "INCREASE":
       const increaseIndex =state.selectedItem.findIndex((item)=>item.id ==action.payload.id)
-      state.selectedItem[increaseIndex].quantity ++;
+      state.selectedItem[increaseIndex].quantity++;
       return{
         ...state,
         ...SumProducts(state.selectedItem),
@@ -36,7 +37,7 @@ switch (action.type) {
       }
       case "DECREASE":
         const decreaseIndex=state.selectedItem.findIndex((item)=>item.id ==action.payload.id)
-        state.selectedItem[decreaseIndex].quantity --;
+        state.selectedItem[decreaseIndex].quantity--;
         return{
           ...state,
           ...SumProducts(state.selectedItem),

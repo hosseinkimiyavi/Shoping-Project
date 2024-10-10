@@ -41,6 +41,15 @@ const total =products.reduce((acc,cur)=>acc +cur.price *cur.quantity,0).toFixed(
 
 return{itemCounter ,total}
 }
+const productQuantity=(state,id)=>{
+ const index =state.selectedItem.findIndex((item)=>item.id == id)
+ if (index==-1){
+  return 0;
+ }
+ else{
+  return state.selectedItem[index].quantity;
+ }
+}
 
 
-export {shortenText ,SearchProducts,Filterproducts ,createQueryObject,getinitialQuery,SumProducts}
+export {shortenText ,SearchProducts,Filterproducts ,createQueryObject,getinitialQuery,SumProducts,productQuantity}
