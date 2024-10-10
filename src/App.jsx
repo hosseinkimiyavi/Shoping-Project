@@ -5,12 +5,15 @@ import Detailspage from "./pages/Detailspage"
 import Notfoundepage from "./pages/Notfoundepage"
 import ProductProvider from "./Context/ProductProvider"
 import CartProvider from "./Context/CartContext"
+import Layout from "./layout/Layout"
 function App() {
  
 
   return (
     <CartProvider>
+        <Layout>
     <ProductProvider>
+    
      <Routes>
       <Route index element={<Navigate to="/product" replace />} />
       <Route path="/product" element={<ProductPage />} />
@@ -18,7 +21,9 @@ function App() {
       <Route path="/CheckOut" element={<CheckOutpage />} />
       <Route path="*" element={<Notfoundepage />} />
      </Routes>
+     
      </ProductProvider>
+     </Layout>
      </CartProvider>
   )
 }
