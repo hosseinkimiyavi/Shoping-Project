@@ -10,7 +10,7 @@ const SearchedProducts = products.filter((p)=>
 };
 const createQueryObject =(currentquery,newquery)=>{
     if(newquery.category=="all"){
-      const {category,...rest} =currentquery;
+      const {category,...rest} =currentquery; //delete category from query
       return rest
     }
     if(newquery.search ==""){

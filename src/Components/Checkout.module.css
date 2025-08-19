@@ -1,11 +1,21 @@
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 10px;
-    min-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  
 }
 .product {
-    width: 70%;
-    margin-left: 50px;
+  width: 70%;
+  /* margin-left: 50px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+@media(width<700px){
+    .container{
+        flex-direction: column-reverse;
+        gap: 2.5rem;
+    }
 }

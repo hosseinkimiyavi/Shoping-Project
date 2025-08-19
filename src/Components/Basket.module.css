@@ -5,7 +5,7 @@
     border: 2px dashed #041540;
     border-radius: 20px;
     padding: 20px;
-    margin-bottom: 20px;
+    
 }
 .card img {
     width: 50px;
@@ -44,4 +44,11 @@
     
 
     
+}
+@media(width<493px){
+    .card{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
 }
